@@ -21,7 +21,7 @@ jobs:
 
       - name: Build with Maven
         run:
-           cd Back-End
+           cd Back-End/
            mvn clean install
 
       - name: Set up Node.js
@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Angular app
         run:
-           cd Front-End
+           cd Front-End/
            ng build --prod
 
       - name: Update HOST_BD 
