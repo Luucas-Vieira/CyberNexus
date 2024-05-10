@@ -54,7 +54,7 @@ jobs:
         run: sed -i 's/<PASSWORD_MAIL>/${{ secrets.PASSWORD_MAIL }}/' src/main/resources/application.properties
 
       - name: Build Docker image
-        run: docker build -t cybernexus
+        run: docker build -t cybernexus 
 
       - name: Push to Railway
         uses: railwayapp/github-action@v2
