@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Angular app
         run: |
-          cd Front-End/
+          Front-End/
           ng build --prod
 
       - name: Update application properties
