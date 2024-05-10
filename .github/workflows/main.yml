@@ -21,7 +21,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          Back-End/
+         cd Back-End/.mvn/wrapper/
           mvn clean install
 
       - name: Set up Node.js
@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Angular app
         run: |
-          Front-End/
+          cd Front-End/src
           ng build --prod
 
       - name: Update application properties
