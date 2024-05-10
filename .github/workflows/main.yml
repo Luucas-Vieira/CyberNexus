@@ -20,7 +20,9 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn clean install
+        run:
+           cd Back-End
+           mvn clean install
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -31,7 +33,9 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Build Angular app
-        run: ng build --prod
+        run:
+           cd Front-End
+           ng build --prod
 
       - name: Update HOST_BD 
         run: sed -i 's/<HOST_BD>/${{ secrets.HOST_BD }}/' src/main/resources/application.properties
