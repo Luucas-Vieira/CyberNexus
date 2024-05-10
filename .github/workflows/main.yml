@@ -20,44 +20,27 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run:
+        run: |
           cd Back-End/
-           mvn clean install
+          mvn clean install
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '14'
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
       - name: Build Angular app
-        run: ng build --prod
+        run: |
+          cd Front-End/
+          ng build --prod
 
-      - name: Update HOST_BD 
-        run: sed -i 's/<HOST_BD>/${{ secrets.HOST_BD }}/' src/main/resources/application.properties
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
 
-      - name: Update USERNAME_BD
-        run: sed -i 's/<USERNAME_BD>/${{ secrets.USERNAME_BD }}/' src/main/resources/application.properties
-
-      - name: Update PASSWORD_BD
-        run: sed -i 's/<PASSWORD_BD>/${{ secrets.PASSWORD_BD }}/' src/main/resources/application.properties
-
-      - name: Update HOST_MAIL 
-        run: sed -i 's/<HOST_MAIL>/${{ secrets.HOST_MAIL }}/' src/main/resources/application.properties
-
-      - name: Update USERNAME_MAIL
-        run: sed -i 's/<USERNAME_MAIL>/${{ secrets.USERNAME_MAIL }}/' src/main/resources/application.properties
-
-      - name: Update PASSWORD_MAIL
-        run: sed -i 's/<PASSWORD_MAIL>/${{ secrets.PASSWORD_MAIL }}/' src/main/resources/application.properties
-
-      - name: Build Docker image
-        run: docker build -t cybernexus 
-
-      - name: Push to Railway
-        uses: railwayapp/github-action@v2
-        with:
-          apiKey: ${{ secrets.RAILWAY_API_KEY }}
-          deployment: cybernexus
+      - name: Deploy to Railway
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
