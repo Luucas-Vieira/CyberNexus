@@ -1,46 +1,32 @@
-name: Deploy to Railway
-
+# .github/workflows/main.yml
+name: Build and Deploy
 on:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
         with:
-          java-version: '17'
-          distribution: 'adopt'
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build with Maven
-        run: |
-          cd Back-End/
-          mvn clean install
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2
         with:
-          node-version: '18'
-
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-
-      - name: Build Angular app
-        run: |
-          cd Front-End/
-          ng build --prod
-
-      - name: Install Railway CLI
-        run: npm install -g @railway/cli
+          context: .
+          push: true
+          tags: cyberneexus/cybernexus:latest
 
       - name: Deploy to Railway
-        run: railway up
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_KEY }}
+        uses: railwayapp/github-action@v2
+        with:
+          apiKey: ${{ secrets.RAILWAY_API_KEY }}
+          deploymentEnvironmentId: ${{ secrets.RAILWAY_ENVIRONMENT_ID }}
