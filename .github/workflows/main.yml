@@ -18,12 +18,21 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build and push Docker images
+      - name: Build and push Docker images for Back-End
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./Back-End
+          file: ./Back-End/Dockerfile
           push: true
-          tags: cyberneexus/cybernexus:latest
+          tags: cyberneexus/cybernexus-backend:latest
+
+      - name: Build and push Docker images for Front-end
+        uses: docker/build-push-action@v2
+        with:
+          context: ./Front-end
+          file: ./Front-end/Dockerfile
+          push: true
+          tags: cyberneexus/cybernexus-frontend:latest
 
       - name: Deploy to Railway
         uses: railwayapp/github-action@v2
