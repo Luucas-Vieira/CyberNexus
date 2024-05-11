@@ -27,7 +27,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '14' # Atualizado para a versão correta do Node.js
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli
@@ -37,7 +37,20 @@ jobs:
           cd Front-End/
           ng build --prod
 
-      - name: Deploy to Railway
-        run: railway up
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_KEY }}
+      - name: Update application properties
+        run: |
+          sed -i 's/<HOST_BD>/${{ secrets.HOST_BD }}/' Back-End/src/main/resources/application.properties
+          sed -i 's/<USERNAME_BD>/${{ secrets.USERNAME_BD }}/' Back-End/src/main/resources/application.properties
+          sed -i 's/<PASSWORD_BD>/${{ secrets.PASSWORD_BD }}/' Back-End/src/main/resources/application.properties
+          sed -i 's/<HOST_MAIL>/${{ secrets.HOST_MAIL }}/' Back-End/src/main/resources/application.properties
+          sed -i 's/<USERNAME_MAIL>/${{ secrets.USERNAME_MAIL }}/' Back-End/src/main/resources/application.properties
+          sed -i 's/<PASSWORD_MAIL>/${{ secrets.PASSWORD_MAIL }}/' Back-End/src/main/resources/application.properties
+
+      - name: Build Docker image
+        run: docker build -t cybernexus -f Back-End/Dockerfile .
+
+      - name: Push to Railway
+        uses: railwayapp/github-action@v2
+        with:
+          apiKey: ${{ secrets.RAILWAY_API_KEY }}
+          deployment: cybernexus
