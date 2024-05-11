@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main  # substitua por sua branch de produção
-
 jobs:
   CI:
     runs-on: ubuntu-latest
