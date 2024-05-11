@@ -1,5 +1,0 @@
-services:
-  backend:
-    image: docker.io/cyberneexus/cybernexus-backend:latest
-  frontend:
-    image: docker.io/cyberneexus/cybernexus-frontend:latest
