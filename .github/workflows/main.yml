@@ -24,15 +24,15 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: \Front-End\Dockerfile
+        context: ./Front-End
+        file: ./Front-End/Dockerfile
         push: true
-        tags: cyberneexus/cybernexus-frontend
+        tags: cyberneexus/cybernexus-frontend:lastet
 
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: \Back-End\Dockerfile
+        context: ./Back-End
+        file: ./Back-End/Dockerfile
         push: true
         tags: cyberneexus/cybernexus-backend
