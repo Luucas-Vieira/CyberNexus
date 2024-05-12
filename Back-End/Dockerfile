@@ -1,6 +1,7 @@
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY target/*.jar cybernexus-0.0.1-SNAPSHOT.jar
+COPY target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "cybernexus-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
 
