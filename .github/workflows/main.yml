@@ -28,10 +28,17 @@ jobs:
         file: ./Front-End/Dockerfile
         push: true
         tags: cyberneexus/cybernexus-frontend:lastet
+        
+    - name: Set up JDK 17 slim
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '17'
 
     - name: Print Java version
       run: java -version
-
+      
+   
    
     - name: Build with Maven
       run: mvn -f ./Back-End/pom.xml clean package
