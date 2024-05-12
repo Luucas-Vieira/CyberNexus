@@ -29,16 +29,10 @@ jobs:
         push: true
         tags: cyberneexus/cybernexus-frontend:lastet
         
-    - name: Print project Java version
-      run: |
-        echo "Java version specified in the project:"
-        grep -oP '(?<=<maven.compiler.source>).*(?=</maven.compiler.source>)' pom.xml
-        grep -oP '(?<=<maven.compiler.target>).*(?=</maven.compiler.target>)' pom.xml
         
-    - name: Set up JDK 17 slim
+    - name: Set up JDK 17 
       uses: actions/setup-java@v2
       with:
-        distribution: 'temurin'
         java-version: '17'
 
     - name: Print Java version
