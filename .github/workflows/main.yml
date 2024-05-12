@@ -57,4 +57,4 @@ jobs:
         context: ./Back-End
         file: ./Back-End/Dockerfile
         push: true
-        tags: cyberneexus/cybernexus-backend
+        tags: cyberneexus/cybernexus-backend:lastet
