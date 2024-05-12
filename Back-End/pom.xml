@@ -67,7 +67,6 @@
         </dependency>
 
 
-
     </dependencies>
 
     <build>
@@ -75,6 +74,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.2.5</version>
                 <configuration>
                     <excludes>
                         <exclude>
