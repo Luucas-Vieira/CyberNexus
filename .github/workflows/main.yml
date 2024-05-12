@@ -40,6 +40,8 @@ jobs:
         java-version: '17.0.11'
 
     - name: Build with Maven
+      with:
+        content: ./Back-End
       run: mvn clean package
 
     - name: Build and push Docker images
