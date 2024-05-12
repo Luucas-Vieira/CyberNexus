@@ -22,24 +22,7 @@ jobs:
         password: ${{ secrets.PASSWORD_DOKER }}
 
 
-        
-    - name: Update HOST_BD 
-      run: sed -i 's/<HOST_BD>/${{ secrets.HOST_BD }}/' src/main/resources/application.properties
-      
-    - name: Update USERNAME_BD
-      run: sed -i 's/<USERNAME_BD>/${{ secrets.USERNAME_BD }}/' src/main/resources/application.properties
-
-    - name: Update PASSWORD_BD
-      run: sed -i 's/<PASSWORD_BD>/${{ secrets.PASSWORD_BD }}/' src/main/resources/application.properties
-
-    - name: Update HOST_MAIL 
-      run: sed -i 's/<HOST_MAIL>/${{ secrets.HOST_MAIL }}/' src/main/resources/application.properties
-
-    - name: Update USERNAME_MAIL
-      run: sed -i 's/<USERNAME_MAIL>/${{ secrets.USERNAME_MAIL }}/' src/main/resources/application.properties
-
-    - name: Update PASSWORD_MAIL
-      run: sed -i 's/<PASSWORD_MAIL>/${{ secrets.PASSWORD_MAIL }}/' src/main/resources/application.properties
+     
 
 
     - name: Build and push Docker images
@@ -57,3 +40,10 @@ jobs:
         file: ./Back-End/Dockerfile
         push: true
         tags: cyberneexus/cybernexus-backend:lastet
+        build-args: |
+          HOST_BD=${{ secrets.HOST_BD }}
+          USERNAME_BD=${{ secrets.USERNAME_BD }}
+          PASSWORD_BD=${{ secrets.PASSWORD_BD }}
+          HOST_MAIL=${{ secrets.HOST_MAIL }}
+          USERNAME_MAIL=${{ secrets.USERNAME_MAIL }}
+          PASSWORD_MAIL=${{ secrets.PASSWORD_MAIL }}
