@@ -17,7 +17,7 @@ public class FaleConoscoController {
     private FaleConoscoService faleConoscoService;
 
 
-    @PostMapping("cybernexus-backend-production.up.railway.app/fale-conosco/enviarEmail")
+    @PostMapping("/fale-conosco/enviarEmail")
     public ResponseEntity<FaleConoscoDTO> enviarEmail(@RequestPart("faleConoscoDTO") @Valid FaleConoscoDTO faleConoscoDTO, @RequestPart("anexos") List<MultipartFile> anexos) {
         faleConoscoService.enviarEmail(faleConoscoDTO, anexos);
         return new ResponseEntity<>(faleConoscoDTO, HttpStatus.CREATED);
