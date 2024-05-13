@@ -45,19 +45,19 @@ jobs:
       run: sed -i 's|<HOST_BD>|${{ secrets.HOST_BD }}|' ./Back-End/src/main/resources/application.properties
       
     - name: Update USERNAME_BD
-      run: sed -i 's|<USERNAME_BD>|${{ secrets.USERNAME_BD }}|' src/main/resources/application.properties
+      run: sed -i 's|<USERNAME_BD>|${{ secrets.USERNAME_BD }}|' ./Back-End/src/main/resources/application.properties
 
     - name: Update PASSWORD_BD
-      run: sed -i 's|<PASSWORD_BD>|${{ secrets.PASSWORD_BD }}|' src/main/resources/application.properties
+      run: sed -i 's|<PASSWORD_BD>|${{ secrets.PASSWORD_BD }}|' ./Back-End/src/main/resources/application.properties
 
     - name: Update HOST_MAIL 
-      run: sed -i 's|<HOST_MAIL>|${{ secrets.HOST_MAIL }}|' src/main/resources/application.properties
+      run: sed -i 's|<HOST_MAIL>|${{ secrets.HOST_MAIL }}|' ./Back-End/src/main/resources/application.properties
 
     - name: Update USERNAME_MAIL
-      run: sed -i 's|<USERNAME_MAIL>|${{ secrets.USERNAME_MAIL }}|' src/main/resources/application.properties
+      run: sed -i 's|<USERNAME_MAIL>|${{ secrets.USERNAME_MAIL }}|' ./Back-End/src/main/resources/application.properties
 
     - name: Update PASSWORD_MAIL
-      run: sed -i 's|<PASSWORD_MAIL>|${{ secrets.PASSWORD_MAIL }}|' src/main/resources/application.properties
+      run: sed -i 's|<PASSWORD_MAIL>|${{ secrets.PASSWORD_MAIL }}|' ./Back-End/src/main/resources/application.properties
 
    
    
