@@ -7,7 +7,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-
+     
     steps:
     - name: Check Out Repo
       uses: actions/checkout@v2
@@ -21,28 +21,6 @@ jobs:
         username: ${{ secrets.USERNAME_DOCKER }}
         password: ${{ secrets.PASSWORD_DOKER }}
 
-<<<<<<< HEAD
-        
-      - name: Update HOST_BD 
-        run: sed -i 's/<HOST_BD>/${{ secrets.HOST_BD }}/' src/main/resources/application.properties
-
-      - name: Update USERNAME_BD
-        run: sed -i 's/<USERNAME_BD>/${{ secrets.USERNAME_BD }}/' src/main/resources/application.properties
-
-      - name: Update PASSWORD_BD
-        run: sed -i 's/<PASSWORD_BD>/${{ secrets.PASSWORD_BD }}/' src/main/resources/application.properties
-
-      - name: Update HOST_MAIL 
-        run: sed -i 's/<HOST_MAIL>/${{ secrets.HOST_MAIL }}/' src/main/resources/application.properties
-
-      - name: Update USERNAME_MAIL
-        run: sed -i 's/<USERNAME_MAIL>/${{ secrets.USERNAME_MAIL }}/' src/main/resources/application.properties
-
-      - name: Update PASSWORD_MAIL
-        run: sed -i 's/<PASSWORD_MAIL>/${{ secrets.PASSWORD_MAIL }}/' src/main/resources/application.properties
-
-=======
->>>>>>> 8fdfed81bf1487d40275ac9a5853f961074c06c5
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
       with:
@@ -50,6 +28,21 @@ jobs:
         file: ./Front-End/Dockerfile
         push: true
         tags: cyberneexus/cybernexus-frontend:lastet
+        
+        
+    - name: Set up GraalVM JDK 17.0.11
+      uses: DeLaGuardo/setup-graalvm@4.0
+      with:
+        graalvm-version: '21.3.0'
+        java-version: '17.0.11'
+
+    - name: Print Java version
+      run: java -version
+      
+   
+   
+    - name: Build with Maven
+      run: mvn -f ./Back-End/pom.xml clean package
 
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
@@ -57,4 +50,11 @@ jobs:
         context: ./Back-End
         file: ./Back-End/Dockerfile
         push: true
-        tags: cyberneexus/cybernexus-backend
+        tags: cyberneexus/cybernexus-backend:lastet
+        build-args: |
+          HOST_BD=${{ secrets.HOST_BD }}
+          USERNAME_BD=${{ secrets.USERNAME_BD }}
+          PASSWORD_BD=${{ secrets.PASSWORD_BD }}
+          HOST_MAIL=${{ secrets.HOST_MAIL }}
+          USERNAME_MAIL=${{ secrets.USERNAME_MAIL }}
+          PASSWORD_MAIL=${{ secrets.PASSWORD_MAIL }}
