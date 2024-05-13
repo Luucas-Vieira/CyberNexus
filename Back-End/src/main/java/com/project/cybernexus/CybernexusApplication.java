@@ -13,6 +13,8 @@ public class CybernexusApplication {
     public static void main(String[] args) {
         SpringApplication.run(CybernexusApplication.class, args);
         System.out.println("Cybernexus Application Started");
+         System.out.println("PORT: " + System.getenv("PORT"));
+
     
     }
 
