@@ -30,11 +30,13 @@ jobs:
         tags: cyberneexus/cybernexus-frontend:lastet
         
         
-    - name: Set up GraalVM JDK 17.0.11
-      uses: DeLaGuardo/setup-graalvm@4.0
+    - name: Set up GraalVM
+      uses: actions/setup-java@v2
       with:
-        graalvm-version: '21.3.0'
-        java-version: '17.0.11'
+        distribution: 'temurin'
+        java-version: '17'
+        java-package: 'jdk' # (jre, jdk, or jdk+fx) - defaults to jdk
+        architecture: 'x64' 
 
     - name: Print Java version
       run: java -version
