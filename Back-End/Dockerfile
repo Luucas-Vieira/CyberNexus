@@ -1,4 +1,4 @@
-FROM openjdk:graalvm-jdk-17.0.11
+FROM openjdk: 17
 WORKDIR /app
 COPY target/*.jar app.jar
 EXPOSE 8080
