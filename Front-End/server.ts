@@ -44,7 +44,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = Number(process.env['PORT']) || 4200; // Use a porta fornecida pelo Railway
+  const port = Number(process.env['PORT']) || 443; // Use a porta fornecida pelo Railway
 
   // Start up the Node server
   const server = app();
