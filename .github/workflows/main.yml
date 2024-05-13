@@ -34,7 +34,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: 'temurin'
-        java-version: '17'
+        java-version: '17.0.11'
         java-package: 'jdk' # (jre, jdk, or jdk+fx) - defaults to jdk
         architecture: 'x64' 
 
