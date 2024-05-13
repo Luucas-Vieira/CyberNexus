@@ -9,9 +9,6 @@
     "test": "ng test",
     "serve:ssr:cybernexus": "node dist/cybernexus/server/server.mjs"
   },
-  "scripts": {
-  "postinstall": "npm run build",
-},
   
   "private": true,
   "dependencies": {
