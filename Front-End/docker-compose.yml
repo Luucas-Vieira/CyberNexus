@@ -2,7 +2,7 @@ version: '3.8'
 services:
   CyberNexus:
     build:
-      context: ./Front-End
+      context: .
       dockerfile: .Front-End/Dockerfile
     ports:
       - "4200:4200"
