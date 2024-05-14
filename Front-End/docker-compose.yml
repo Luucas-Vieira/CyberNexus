@@ -3,7 +3,7 @@ services:
  cybernexus-frontend:
     build:
       context: .
-      dockerfile: .Front-End/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4200:4200"
     networks:
