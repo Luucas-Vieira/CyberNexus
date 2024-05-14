@@ -23,7 +23,7 @@ jobs:
         
     - name: SET APOTANDO REDE     
       run: |
-        cd frontend
+        cd Front-End
         docker-compose up -d
         
     - name: Build and push Docker images
