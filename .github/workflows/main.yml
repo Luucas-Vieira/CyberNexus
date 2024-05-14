@@ -21,8 +21,8 @@ jobs:
         username: ${{ secrets.USERNAME_DOCKER }}
         password: ${{ secrets.PASSWORD_DOKER }}
         
-    - name: SET APOTANDO REDE
-      run: docker-compose up
+    - name: SET APOTANDO REDE     
+      run: docker-compose up ./Front-End/src/docker-compose
         
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
