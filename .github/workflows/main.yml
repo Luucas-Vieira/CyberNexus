@@ -20,11 +20,6 @@ jobs:
       with:
         username: ${{ secrets.USERNAME_DOCKER }}
         password: ${{ secrets.PASSWORD_DOKER }}
-      
-    - name: apontamento rede
-      run: |
-        cd ./Front-End
-        docker run -p 0.0.0.0:4200:4200 cyberneexus/cybernexus-frontend
 
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
