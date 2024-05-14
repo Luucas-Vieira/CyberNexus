@@ -22,7 +22,7 @@ jobs:
         password: ${{ secrets.PASSWORD_DOKER }}
         
     - name: SET APOTANDO REDE     
-      run: docker-compose up ./Front-End/src/docker-compose
+      run: docker-compose up ./Front-End/src/docker-compose.yml
         
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
