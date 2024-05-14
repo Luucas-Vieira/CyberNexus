@@ -1,14 +1,14 @@
 version: '3.8'
 services:
-  meu-app:
+  CyberNexus:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./Front-End
+      dockerfile: .Front-End/Dockerfile
     ports:
       - "4200:4200"
     networks:
-      - minha-rede
+      - cybernexus-rede
 
 networks:
-  minha-rede:
+  cybernexus-rede:
     driver: bridge
