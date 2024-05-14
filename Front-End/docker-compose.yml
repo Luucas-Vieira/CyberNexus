@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  meu-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "443:443"
+    networks:
+      - minha-rede
+
+networks:
+  minha-rede:
+    driver: bridge
